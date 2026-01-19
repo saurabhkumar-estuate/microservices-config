@@ -6,6 +6,12 @@ spring:
     name: api-gateway
   config:
     import: optional:configserver:http://localhost:8888
+    
+security:
+  jwt:
+    secret: my-secret-key-which-should-be-strong
+    expiration: 3600000
+    
   cloud:
     gateway:
       routes:
