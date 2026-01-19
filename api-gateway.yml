@@ -9,6 +9,8 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/auth/**
+          filters:
+            - StripPrefix=0
 
         - id: product-service
           uri: http://localhost:8081
