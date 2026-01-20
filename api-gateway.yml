@@ -19,6 +19,13 @@ spring:
           filters:
             - name: JwtAuthFilterFactory
 
+        - id: order-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/orders/**
+          filters:
+            - JwtAuthFilterFactory
+
 logging:
   level:
     root: INFO
