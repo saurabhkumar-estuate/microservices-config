@@ -2,6 +2,10 @@ server:
   port: 8080
 
 spring:
+  application:
+    name: api-gateway
+    
+  # Cloud and Gateway Configuration
   cloud:
     gateway:
       routes:
@@ -24,9 +28,17 @@ spring:
           predicates:
             - Path=/orders/**
           filters:
-            - JwtAuthFilterFactory
+            - name: JwtAuthFilterFactory
 
+  # Data and Redis Configuration
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+# Logging Configuration
 logging:
   level:
     root: INFO
     org.springframework.cloud.gateway: DEBUG
+    com.example.gateway: DEBUG
